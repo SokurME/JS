@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content='text/html' ; charset='utf-8'>
+</head>
+
+<body>
+    <p>С помощью цикла while вывести все простые числа в промежутке от 0 до 100.</p>
+    <script>
+        function IsPrime(x) {
+            if ((x == 2) || (x == 3)) {
+                return true
+            }
+            if ((x < 2) || (x % 2 == 0)) {
+                return false
+            }
+            for (var i = 3; i < x; i++)
+                if ((x % i) == 0) {
+                    return false
+                }
+            return true
+        }
+
+        a = 0;
+        while (a <= 100) {
+            if (IsPrime(a)) {
+                console.log(a)
+            }
+            a++
+        }
+    </script>
+</body>
+
+</html>
