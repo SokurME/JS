@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <meta content='text/html' ; charset='utf-8'>
+</head>
+
+<body>
+    <p>В прошлом домашнем задании вы реализовали корзину на базе массивов. Какими объектами можно заменить их элементы?
+        Реализуйте такие объекты.
+        Перенести функционал подсчета корзины на объектно-ориентированную базу.</p>
+    <script>
+        var products = [
+            { id: 1, name: 'Хлеб', price: 50 },
+            { id: 2, name: 'Молоко', price: 80 },
+            { id: 3, name: 'Сыр', price: 350 },
+            { id: 4, name: 'Колбаса', price: 520 },
+        ]
+        var basket = [
+            { id: 1, count: 5 },
+            { id: 2, count: 7 },
+            { id: 3, count: 3 },
+            { id: 4, count: 2 },
+        ]
+        function countCartPrice() {
+            let total = 0;
+            products.forEach(product => {
+                basket.forEach(elem => {
+                    if (elem.id == product.id) {
+                        count = elem.count
+                        total += product.price * count
+                    }
+                })
+            })
+            return total
+        }
+        console.log('Общая стоимость корзины ' + countCartPrice())
+    </script>
+</body>
+
+</html>
