@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+    <meta content='text/html' ; charset='utf-8'>
+</head>
+
+<body>
+    <p>Заполнить созданную таблицу буквами, отвечающими за шахматную фигуру, например К – король, Ф – ферзь и т.п.,
+        причем все фигуры должны стоять на своих местах и быть соответственно черными и белыми.</p>
+    <canvas id='ChessCanvas'></canvas>
+
+    <script>
+        function ChessBoard() {
+            var canvas = document.getElementById('ChessCanvas');
+            var board = canvas.getContext('2d');
+            var name = ['Л', 'К', 'С', 'Ф', 'К' + '\u265B', 'С', 'К', 'Л']
+            const X0 = 50, Y0 = 50, dX = 50, dY = 50, cells = 8;
+            canvas.width = X0 + dX * cells;
+            canvas.height = Y0 + dY * cells;
+            board.fillStyle = '#C9C9C9'
+            board.fillRect(X0, Y0, X0 + cells * dX, Y0 + cells * dY)
+            board.font = "bold 20px Arial";
+            board.fillStyle = '#5A5A5A'
+            for (var i = 0; i <= cells; i += 2) {
+                for (var j = 0; j <= cells; j += 2) {
+                    board.fillRect(X0 + i * dX, Y0 + j * dY, dX, dY);
+                    board.fillRect(X0 + (i + 1) * dX, Y0 + (j + 1) * dY, dX, dY);
+                }
+                board.fillText(cells - i, X0 / 2, Y0 * 2 - dY / 2 + i * Y0);
+                board.fillText(cells - i - 1, X0 / 2, Y0 * 2 - dY / 2 + (i + 1) * Y0);
+            }
+
+            for (var j = 0; j <= cells; j++) {
+                board.fillStyle = 'black'
+                board.fillText(String.fromCharCode(j + 65), X0 + dX * j + 15, Y0 / 2 + 10);
+                board.fillText(name[j], X0 + dX * j + 15, Y0 * 2 - dY / 2 + 10);
+                board.fillText('П', X0 + dX * j + 15, Y0 * 3 - dY / 2 + 5);
+                board.fillStyle = 'white'
+                board.fillText(name[j], X0 + dX * j + 15, (Y0 * 2 - dY / 2) * (cells - 2) - 15);
+                board.fillText('П', X0 + dX * j + 15, (Y0 * 2 - dY / 2) * (cells - 3) + 5);
+            }
+        }
+        window.onload = ChessBoard;
+    </script>
+</body>
+
+</html>
